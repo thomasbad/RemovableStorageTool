@@ -21,7 +21,8 @@ function Display-Menu {
 |  \/||    \    / \  | / \|| / \|| |   
 |    /\___ |    | |  | \_/|| \_/|| |_/\
 \_/\_\\____/    \_/  \____/\____/\____/
-                                       
+
+---------------------------------------------------------------------------------                                       
 Tool to enable / disable the removable storage access on access PC.
 If you use it to temporary enable the access on domain GPO controlled PC,
 remember to run "gpupdate" after use.
