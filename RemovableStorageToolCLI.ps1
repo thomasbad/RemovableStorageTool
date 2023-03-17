@@ -36,6 +36,7 @@ Press 5 - Disable removable storage access within remote desktop session
 Press 6 - Enable removable storage access within remote desktop session
 Press 7 - Reset all settings back to Windows default
 Press 8 - Reboot PC
+Press 9 - Update Group Policy
 Press 0 - Exit the tool
 ---------------------------------------------------------------------------------
 '@
@@ -49,88 +50,180 @@ function Choice-Forward {
         '1' {
             Clear-Host
             DisableAll
-            '===================COMPLETED==================='
-            '-----------------------------------------------'
-            '      All Removable Storage access disabled    '
-            '   Please reboot the PC to activate the change '
-            '-----------------------------------------------'
-            ' =============PRESS ANY KEY TO EXIT============'
-            Exit
-            }
+            if($?)
+                {
+                Clear-Host
+                '===================COMPLETED==================='
+                '-----------------------------------------------'
+                '      All Removable Storage access disabled    '
+                '   Please reboot the PC to activate the change '
+                '-----------------------------------------------'
+                '==========PRESS ANY KEY TO BACK TO MENU========'
+                Read-Host
+                Display-Menu
+                }
+            else
+                {
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                }            
+             }
         '2' {
             Clear-Host
             EnableAll
-            '===================COMPLETED==================='
-            '-----------------------------------------------'
-            '      All Removable Storage access enabled     '
-            '   Please reboot the PC to activate the change '
-            '-----------------------------------------------'
-            ' =============PRESS ANY KEY TO EXIT============'
-            Exit
+            if($?)
+                {
+                Clear-Host
+                '===================COMPLETED==================='
+                '-----------------------------------------------'
+                '      All Removable Storage access enabled     '
+                '   Please reboot the PC to activate the change '
+                '-----------------------------------------------'
+                '==========PRESS ANY KEY TO BACK TO MENU========'
+            Read-Host
+            Display-Menu
+                }
+            else
+                {
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                }            
             }
         '3' {
             Clear-Host
             DisableWT
-            '===================COMPLETED==================='
-            '-----------------------------------------------'
-            '    Removable Storage write access disabled    '
-            '   Please reboot the PC to activate the change '
-            '-----------------------------------------------'
-            ' =============PRESS ANY KEY TO EXIT============'
-            Exit
+            if($?)
+                {
+                Clear-Host
+                '===================COMPLETED==================='
+                '-----------------------------------------------'
+                '    Removable Storage write access disabled    '
+                '   Please reboot the PC to activate the change '
+                '-----------------------------------------------'
+                '==========PRESS ANY KEY TO BACK TO MENU========'
+            Read-Host
+            Display-Menu
+                }
+            else
+                {
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                }            
             }
         '4' {
             Clear-Host
             EnableWT
-            '===================COMPLETED==================='
-            '-----------------------------------------------'
-            '     Removable Storage write access disabled   '
-            '   Please reboot the PC to activate the change '
-            '-----------------------------------------------'
-            ' =============PRESS ANY KEY TO EXIT============'
-            Exit
+            if($?)
+                {
+                Clear-Host
+                '===================COMPLETED==================='
+                '-----------------------------------------------'
+                '     Removable Storage write access disabled   '
+                '   Please reboot the PC to activate the change '
+                '-----------------------------------------------'
+                '==========PRESS ANY KEY TO BACK TO MENU========'
+            Read-Host
+            Display-Menu
+                }
+            else
+                {
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                }            
             }
         '5' {
             Clear-Host
             DisableRemote
-            '======================COMPLETED========================'
-            '-------------------------------------------------------'
-            '     Removable Storage from remote session disabled    '
-            '       Please reboot the PC to activate the change     '
-            '-------------------------------------------------------'
-            ' =================PRESS ANY KEY TO EXIT================'
-            Exit
+            if($?)
+                {
+                Clear-Host
+                '======================COMPLETED========================'
+                '-------------------------------------------------------'
+                '     Removable Storage from remote session disabled    '
+                '       Please reboot the PC to activate the change     '
+                '-------------------------------------------------------'
+                '=============PRESS ANY KEY TO BACK TO MENU============='
+            Read-Host
+            Display-Menu
+                }
+            else
+                {
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                }            
             }
         '6' {
             Clear-Host
             EnableRemote
-            '======================COMPLETED========================'
-            '-------------------------------------------------------'
-            '     Removable Storage from remote session enabled    '
-            '       Please reboot the PC to activate the change '
-            '-------------------------------------------------------'
-            ' =================PRESS ANY KEY TO EXIT================'
-            Exit
+            if($?)
+                {
+                Clear-Host
+                '======================COMPLETED========================'
+                '-------------------------------------------------------'
+                '     Removable Storage from remote session enabled    '
+                '       Please reboot the PC to activate the change '
+                '-------------------------------------------------------'
+                '=============PRESS ANY KEY TO BACK TO MENU============='
+            Read-Host
+            Display-Menu
+                }
+            else
+                {
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                }             
             }
          '7' {
              Clear-Host
              ResetSetting
-            '======================COMPLETED========================'
-            '-------------------------------------------------------'
-            '       All Setting revert back to Windows default      '
-            '       Please reboot the PC to activate the change     '
-            '-------------------------------------------------------'
-            ' =================PRESS ANY KEY TO EXIT================'
-            Exit
+             if($?)
+                {
+                Clear-Host
+                '======================COMPLETED========================'
+                '-------------------------------------------------------'
+                '       All Setting revert back to Windows default      '
+                '       Please reboot the PC to activate the change     '
+                '-------------------------------------------------------'
+                '=============PRESS ANY KEY TO BACK TO MENU============='
+            Read-Host
+            Display-Menu
+                }
+            else
+                {
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                Write-Host "Error detected, please ensure this script is started with admin rights, or investage the error above" -ForegroundColor yellow
+                }           
             }
          '8' {
              Clear-Host
              RebootPC
+             Clear-Host
             '========================Cancel========================='
             '-------------------------------------------------------'
             '                    Reboot Canceled                    '
             '-------------------------------------------------------'
-            ' =============PRESS ANY KEY TO BACK TO MENU============'
+            '=============PRESS ANY KEY TO BACK TO MENU============='
+            Read-Host
+            Display-Menu
+            }
+        '9' {
+             Clear-Host
+             gpupdate /Force
+             Clear-Host
+                '======================COMPLETED========================'
+                '-------------------------------------------------------'
+                '                  Group Policy Updated                 '
+                '       Please reboot the PC to activate the change     '
+                '-------------------------------------------------------'
+                '=============PRESS ANY KEY TO BACK TO MENU============='
+            Read-Host
             Display-Menu
             }
          '0' {
@@ -140,7 +233,7 @@ function Choice-Forward {
                  Write-Warning '============INVALID INPUT============'
                  Write-Warning '-------------------------------------'
                  Write-Warning 'Please select a number from the Main'
-                 Write-Warning 'Menu [1 - 8], or select [0] to quit.'
+                 Write-Warning 'Menu [1 - 9], or select [0] to quit.'
                  Write-Warning '-------------------------------------'
                  Write-Warning '======PRESS ANY KEY TO CONTINUE======'
                  Read-Host
@@ -159,14 +252,16 @@ function DisableAll {
     New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Name "Deny_All" -PropertyType DWord -Value "1" -Force
     #Removable Storage to Remote Session
     New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Name "AllowRemoteDASD" -PropertyType DWord -Value "1" -Force
+    }
 
 #Enable all
-function EnableAll { 
+function EnableAll {
     #This change will override all other buttons settings:
     New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Force
     New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Name "Deny_All" -PropertyType DWord -Value "0" -Force
     #Removable Storage to Remote Session
     New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Name "AllowRemoteDASD" -PropertyType DWord -Value "0" -Force
+    }
 
 #Disable Write Access
 function DisableWT { 
@@ -190,7 +285,8 @@ function DisableWT {
     New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices\{F33FDC04-D1AC-4E8E-9A30-19BBD4B108AE}" -Name "Deny_Write" -PropertyType DWord -Value "1" -Force
     #Removable Storage to Remote Session
     New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Name "AllowRemoteDASD" -PropertyType DWord -Value "1" -Force
-  
+    }
+      
 #Enable Write Access
 function EnableWT { 
     New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Force
@@ -213,19 +309,22 @@ function EnableWT {
     New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices\{F33FDC04-D1AC-4E8E-9A30-19BBD4B108AE}" -Name "Deny_Write" -PropertyType DWord -Value "0" -Force
     #Removable Storage to Remote Session
     New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Name "AllowRemoteDASD" -PropertyType DWord -Value "1" -Force
+    }
 
 #Disable Remote Removable Storage access
 function DisableRemote { 
     #Removable Storage to Remote Session
     New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Force
     New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Name "AllowRemoteDASD" -PropertyType DWord -Value "1" -Force
+    }
 
 #Enable Remote Removable Storage access
 function EnableRemote {
     #Removable Storage to Remote Session
     New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Force
     New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Name "AllowRemoteDASD" -PropertyType DWord -Value "0" -Force
-  
+    }
+
 #Reboot PC with confirmation
 function RebootPC { 
   $rebootConfirm = Read-Host "Are you sure you have saved all your documents and ready to boot?  [Y/N]"
@@ -248,15 +347,20 @@ function ResetSetting {
     {
         Clear-Host
         Write-Host @'
-          The Setting is already Windows default, no change have made
-          Press any key to get back to menu
-          '@
+==========================Cancel===========================
+-----------------------------------------------------------
+The Setting is already Windows default, no change have made
+            Press any key to get back to menu                    
+-----------------------------------------------------------
+===============PRESS ANY KEY TO BACK TO MENU===============
+        
+'@ -ForegroundColor yellow
         Read-Host
         Display-Menu
     }
   else
     {
-        Remove-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Force        
+        Remove-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Force -Recurse
     }  
 }
 
