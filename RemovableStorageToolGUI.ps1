@@ -1,4 +1,7 @@
+#Run As Admin
+#powershell Start-Process powershell -Verb runAs
 # Hide PowerShell Console
+
 Add-Type -Name Window -Namespace Console -MemberDefinition '
 [DllImport("Kernel32.dll")]
 public static extern IntPtr GetConsoleWindow();
@@ -7,6 +10,7 @@ public static extern bool ShowWindow(IntPtr hWnd, Int32 nCmdShow);
 '
 $consolePtr = [Console.Window]::GetConsoleWindow()
 [Console.Window]::ShowWindow($consolePtr, 0)
+
 
 #-----[functions area]------
 
@@ -164,7 +168,7 @@ function ResetSetting {
     }
   else
     {
-        Remove-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Force  
+        Remove-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\RemovableStorageDevices" -Recurse -Force  
         if($?)
         {
         $SuccssMsg                    = [System.Windows.MessageBox]::Show($SuccessMsgbody,$SuccessMsgTitle,$ButtonOK,$SuccessMsgIcon)
@@ -176,12 +180,35 @@ function ResetSetting {
     }  
 }
 
+function GPUPDATE_func {
+    #Building Loading form
+    $loadingForm = New-Object System.Windows.Forms.Form
+    $loadingForm.Text = "Updating"
+    $loadingForm.Size = New-Object System.Drawing.Size(300,100)
+
+    #Add Label
+    $loadingLabel = New-Object System.Windows.Forms.Label
+    $loadingLabel.Location = New-Object System.Drawing.Size(30,20) 
+    $loadingLabel.Size = New-Object System.Drawing.Size(200,100)
+    $loadingLabel.Text = "Group Policy updating... Please wait..."
+    $loadingForm.Controls.Add($loadingLabel)
+
+    # Show the form
+    $loadingForm.Show() | Out-Null
+
+    gpupdate /Force
+    #$LoadingMsg                    = [System.Windows.MessageBox]::Hide
+    $SuccssMsg                    = [System.Windows.MessageBox]::Show($SuccessMsgbody,$SuccessMsgTitle,$ButtonOK,$SuccessMsgIcon)
+    #Close loading inform
+    $loadingForm.Close() | Out-Null
+}
+
 # Init PowerShell Gui
 Add-Type -AssemblyName System.Windows.Forms
 # Create a new form
 $Form                    = New-Object system.Windows.Forms.Form
 # Define the size, title and background color
-$Form.ClientSize         = '500,300'
+$Form.ClientSize         = '500,330'
 $Form.text               = "Removable Storage Disable Tool"
 $Form.BackColor          = "#ffffff"
 
@@ -291,7 +318,7 @@ $RebootBtn.BackColor          = "#BF26AC"
 $RebootBtn.text               = "Reboot Computer"
 $RebootBtn.width              = 100
 $RebootBtn.height             = 40
-$RebootBtn.location           = New-Object System.Drawing.Point(380,150)
+$RebootBtn.location           = New-Object System.Drawing.Point(380,125)
 $RebootBtn.Font               = 'Microsoft Sans Serif,10'
 $RebootBtn.ForeColor          = "#ffffff"
 $RebootBtn.Add_Click({ RebootPC })
@@ -303,11 +330,34 @@ $ResetBtn.BackColor          = "#BF26AC"
 $ResetBtn.text               = "Reset All Setting"
 $ResetBtn.width              = 100
 $ResetBtn.height             = 40
-$ResetBtn.location           = New-Object System.Drawing.Point(380,200)
+$ResetBtn.location           = New-Object System.Drawing.Point(380,180)
 $ResetBtn.Font               = 'Microsoft Sans Serif,10'
 $ResetBtn.ForeColor          = "#ffffff"
 $ResetBtn.Add_Click({ ResetSetting })
 $Form.Controls.Add($ResetBtn)
+
+#gpupdate Button
+$gpupdateBtn                    = New-Object system.Windows.Forms.Button
+$gpupdateBtn.BackColor          = "#4438D2"
+$gpupdateBtn.text               = "Update Group Policy"
+$gpupdateBtn.width              = 100
+$gpupdateBtn.height             = 40
+$gpupdateBtn.location           = New-Object System.Drawing.Point(380,240)
+$gpupdateBtn.Font               = 'Microsoft Sans Serif,10'
+$gpupdateBtn.ForeColor          = "#ffffff"
+$gpupdateBtn.Add_Click({ GPUPDATE_func })
+$Form.Controls.Add($gpupdateBtn)
+
+#Licensing
+$Licensing                     = New-Object system.Windows.Forms.Label
+$Licensing.text                = "Created by Thomas Hon aka mkaa`nLicensing with GNU Lesser General Public License v2.1"
+$Licensing.AutoSize            = $false
+$Licensing.width               = 450
+$Licensing.height              = 50
+$Licensing.location            = New-Object System.Drawing.Point(20,300)
+$Licensing.Font                = 'Microsoft Sans Serif,7'
+$Licensing.ForeColor                = 'Gray'
+$Form.Controls.Add($Licensing)
 
 
 # ---------------[ Message Box ] ------------------
