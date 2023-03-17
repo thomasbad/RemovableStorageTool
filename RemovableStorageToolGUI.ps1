@@ -1,7 +1,5 @@
-#Run As Admin
-#powershell Start-Process powershell -Verb runAs
+#Create WinForm
 # Hide PowerShell Console
-
 Add-Type -Name Window -Namespace Console -MemberDefinition '
 [DllImport("Kernel32.dll")]
 public static extern IntPtr GetConsoleWindow();
