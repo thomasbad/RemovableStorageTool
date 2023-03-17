@@ -6,6 +6,9 @@ A tool to disable/enable removable storage access on the local PC
 2. If you not sure how the setting mess up already after many changes, just reset it back to Windows default first.
 3. The PC needs to reboot once to make the change apply on PC
 
+## Download
+https://github.com/thomasbad/RemovableStorageTool/releases/
+
 ## How to Use
 1. Make sure you run this program with "Run as admin", if the program cannot get the admin right itself.
 2. If you use it on the domain group policy controlled PC for temporary unlock the USB drive access, you may:
